@@ -14,10 +14,10 @@ include 'koneksi.php';
 <body>
 
     <!--- page login --->
-    <div class="page-login"></div>
+    <div class="page-login">
 
     <!--- box --->
-    <div class="box box-login"></div>
+    <div class="box box-login">
 
     <!--- box header--->
     <div class="box-header text-center">
@@ -26,6 +26,12 @@ include 'koneksi.php';
 
     <!--- box body --->
     <div class="box-body">
+
+    <?php
+        if(isset($_GET['msg'])){
+            echo "<div class='alert alert-eror'>".$_GET['msg']."</div>";
+        }
+    ?>
 
         <!--- form login --->
         <form action="" method="POST">
@@ -42,14 +48,16 @@ include 'koneksi.php';
             <input type="submit" name="submit" value="Login" class="button"/>
 
         </form>
+    </div>
 
         <?php
 
         if(isset($_POST['submit'])){
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
 
-            $cek = mysqli_query($conn, "SELECT * FROM pengguna WHERE username = '".$user."' ");
+            $user = mysqli_real_escape_string($conn, $_POST['user']);
+            $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+
+            $cek = mysqli_query($conn, "SELECT * FROM pengguna WHERE username = '".$user."'");
             if(mysqli_num_rows($cek) > 0){
 
                 $d = mysqli_fetch_object($cek);
@@ -75,12 +83,6 @@ include 'koneksi.php';
         ?>
 
     </div>
-
-    <!--- box footer --->
-    <div class="box-footer text-center">
-        <a href="index.php">Halaman Utama</a>
-    </div>
-        
 
 </body>
     </html>
