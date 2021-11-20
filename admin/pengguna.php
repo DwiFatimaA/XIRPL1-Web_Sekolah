@@ -11,6 +11,12 @@
 
                 <a href="tambah-pengguna.php"><i class="fa fa-plus"></i>Tambah</a>
 
+                <?php
+                    if(isset($_GET['success'])){
+                        echo "<div class='alert alert-success'>".$_GET['success']."</div>";
+                    }
+                ?>
+
                 <form action="">
                     <div class="input-group">
                         <input type="text" name="key" placeholder="Pencarian">

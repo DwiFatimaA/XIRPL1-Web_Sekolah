@@ -8,7 +8,7 @@
                 Dashboard
             </div>
             <div class="box-body">
-                <h3>Selamat Datang <?= $_SESSION['uname'] ?> di Panel Admin SMK Telkom Purwokerto</h3>
+                <h3>Selamat Datang <?= $_SESSION['uname'] ?> di Panel Admin <?= $d->nama ?></h3>
             </div>
     </div>
     </div>

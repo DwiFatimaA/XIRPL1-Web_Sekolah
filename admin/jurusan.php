@@ -74,5 +74,3 @@
     </div>
 
 <?php include 'footer.php' ?>
-
-warning: 21:00

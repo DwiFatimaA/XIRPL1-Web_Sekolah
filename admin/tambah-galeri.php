@@ -5,18 +5,13 @@
     <div class="container">
         <div class="box">
             <div class="box-header">
-                Tambah Jurusan
+                Tambah Galeri
             </div>
             <div class="box-body">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama" placeholder="Nama Jurusan" class="input-control" required>
-                    </div>
-
-                    <div class="form-group">
                         <label>Keterangan</label>
-                        <textarea name="keterangan" class="input-control" placeholder="Keterangan"></textarea>
+                        <input type="text" name="keterangan" placeholder="Keterangan" class="input-control" required>
                     </div>
                     
                     <div class="form-group">
@@ -24,7 +19,7 @@
                         <input type="file" name="gambar" class="input-control" required>
                     </div>
 
-                    <button type="button" class="button" onclick="window.location = 'jurusan.php'">Kembali</button>
+                    <button type="button" class="button" onclick="window.location = 'galeri.php'">Kembali</button>
                     <input type="submit" name="submit" value="Simpan" class="button button-grey">
 
                 </form>
@@ -35,31 +30,29 @@
 
                     // print_r($_FILES['gambar']);
 
-                    $nama = addslashes(ucwords($_POST['nama']));
-                    $ket  = addslashes($_POST['keterangan']);
+                    $ket = addslashes(ucwords($_POST['keterangan']));
 
                     $filename = $_FILES['gambar']['name'];
                     $tmpname  = $_FILES['gambar']['tmp_name'];
                     $filesize = $_FILES['gambar']['size'];
 
                     $formatfile = pathinfo($filename, PATHINFO_EXTENSION);
-                    $rename     = 'jurusan'.time().'.'.$formatfile;
+                    $rename     = 'galeri'.time().'.'.$formatfile;
 
                     $allowedtype = array('png', 'jpg', 'jpeg', 'gif');
 
                     if(!in_array($formatfile, $allowedtype)){
                         echo '<div class="alert alert-eror">Format file tidak diizinkan</div>';
                     }elseif($filesize > 2000000){
-                        echo '<div class="alert alert-eror">Ukuran file tidak boleh lebih dari 3 MB</div>';
+                        echo '<div class="alert alert-eror">Ukuran file tidak boleh lebih dari 2 MB</div>';
                     }else{
 
-                        move_uploaded_file($tmpname, "../uploads/jurusan/".$rename);
+                        move_uploaded_file($tmpname, "../uploads/galeri/".$rename);
 
-                        $simpan = mysqli_query($conn, "INSERT INTO jurusan VALUES (
+                        $simpan = mysqli_query($conn, "INSERT INTO galeri VALUES (
                             null,
-                            '".$nama."',
-                            '".$ket."',
                             '".$rename."',
+                            '".$ket."',
                             null,
                             null
                         )");

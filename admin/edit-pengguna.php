@@ -61,7 +61,7 @@
                     ");
 
                     if($update){
-                        echo '<div class="alert alert-success">Edit Data Berhasil</div>';
+                        echo "<script>window.location='pengguna.php?success=Edit Data Berhasil'</script>";
                     }else{
                         echo 'Gagal Edit Data '.mysqli_error($conn);
                     }

@@ -7,14 +7,25 @@ if(!isset($_SESSION['status_login'])){
 
 date_default_timezone_set("Asia/Jakarta");
 
+$identitas = mysqli_query($conn, "SELECT * FROM pengaturan ORDER BY id DESC LIMIT 1");
+$d = mysqli_fetch_object($identitas);
+
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Panel Admin - Nama Sekolah</title>
+        <link rel="icon" href="../uploads/identitas/<?= $d->favicon ?>">
+        <title>Panel Admin - <?= $d->nama ?></title>
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+      tinymce.init({
+        selector: '#keterangan'
+      });
+    </script>
+
     </head>
     <body class="bg-light">
         <!--- Navbar -->
@@ -23,7 +34,7 @@ date_default_timezone_set("Asia/Jakarta");
         <div class="container">
         
         <!--- Navbar Brand --->
-        <h3 class="nav-brand float-left"><a href="index.php">SMK Telkom Purwokerto</a></h3>
+        <h3 class="nav-brand float-left"><a href="index.php"><?= $d->nama ?></a></h3>
 
         <!--- Navbar Menu--->
         <ul class="nav-menu float-left">

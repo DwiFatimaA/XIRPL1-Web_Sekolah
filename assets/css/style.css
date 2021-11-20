@@ -21,6 +21,12 @@ a{
     margin: 0 auto;
 }
 
+.container::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
 .bg-light{
     background-color: #f5f5f5;
 }
@@ -245,4 +251,209 @@ form{
 .image{
     border: 1px solid #ddd;
     padding: 5px;
+}
+
+.header{
+    border-bottom: 3px solid #851b3b;
+}
+
+.header a{
+    color: #333;
+}
+
+.header a:hover{
+    color: #851b3b;
+}
+
+.header-logo{
+    float: left;
+    line-height: 70px;
+    padding: 5px 0;
+}
+
+.header-logo img{
+    float: left;
+    margin-right: 10px;
+}
+
+.header-logo h2{
+    float: left;
+}
+
+.header-menu{
+    float: right;
+}
+
+.header-menu li{
+    float: left;
+    list-style: none;
+    padding: 29px 10px;
+}
+
+.banner{
+    border: 1px solid;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.banner-text{
+    padding: 25px 0;
+    background-color: rgba(0,0,0, .7);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.section{
+    padding: 100px 0;
+}
+
+.section h3{
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.section h3::after{
+    content: "";
+    display: block;
+    width: 60px;
+    border: 3px solid #851b3b;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 30px);
+}
+
+.section img{
+    margin-bottom: 10px;
+}
+
+.section h4{
+    margin-bottom: 20px;
+}
+
+.col-4{
+    min-height: 200px;
+    width: 25%;
+    float: left;
+    padding: 10px;
+}
+
+.thumbnail-box{
+    border: 1px solid #ccc;
+    width: 100%;
+    min-height: 200px;
+    background-color: #fff;
+}
+
+.thumbnail-img{
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.thumbnail-text{
+    height: 55px;
+    padding: 5px;
+}
+
+.thumbnail-link{
+    color: #333;
+}
+
+.thumbnail-link:hover{
+    color: #851b3b;
+}
+
+#jurusan{
+    background-color: #f5f5f5
+}
+
+footer{
+    padding: 50px;
+    background-color: #851b3b;
+    color: #fff;
+}
+
+.box-gmaps{
+    float: left;
+    width: 75%;
+}
+
+.mobile-menu-btn{
+    width: 100%;
+    float: left;
+    padding: 10px;
+    display: none;
+}
+
+.box-menu-mobile{
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .9);
+    z-index: 9999;
+}
+
+.box-menu-mobile span{
+    color: #fff;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.box-menu-mobile ul {
+    margin-top: 50px;
+}
+
+.box-menu-mobile ul li a {
+    padding: 10px;
+    display: inline-block;
+    color: #fff;
+}
+
+/*css mobile*/
+
+@media screen and (max-width: 768px){
+    .container{
+        width: 100%;
+    }
+
+    .col-4{
+        width: 50%;
+    }
+
+    .thumbnail-text{
+        font-size: 14px;
+    }
+
+    .header-logo{
+        line-height: 50px;
+        padding-left: 10px;
+    }
+
+    .header-logo img{
+        width: 50px;
+    }
+
+    .header-logo h2{
+        font-size: 20px;
+    }
+
+    .header-menu{
+        display: none;
+    }
+
+    .box-gmaps{
+        width: 100%;
+    }
+
+    .mobile-menu-btn{
+        display: block;
+    }
 }

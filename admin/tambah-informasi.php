@@ -5,18 +5,18 @@
     <div class="container">
         <div class="box">
             <div class="box-header">
-                Tambah Jurusan
+                Tambah Informasi
             </div>
             <div class="box-body">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama" placeholder="Nama Jurusan" class="input-control" required>
+                        <label>Judul</label>
+                        <input type="text" name="judul" placeholder="Judul" class="input-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Keterangan</label>
-                        <textarea name="keterangan" class="input-control" placeholder="Keterangan"></textarea>
+                        <textarea name="keterangan" class="input-control" placeholder="Keterangan" id="keterangan"></textarea>
                     </div>
                     
                     <div class="form-group">
@@ -24,7 +24,7 @@
                         <input type="file" name="gambar" class="input-control" required>
                     </div>
 
-                    <button type="button" class="button" onclick="window.location = 'jurusan.php'">Kembali</button>
+                    <button type="button" class="button" onclick="window.location = 'informasi.php'">Kembali</button>
                     <input type="submit" name="submit" value="Simpan" class="button button-grey">
 
                 </form>
@@ -35,7 +35,7 @@
 
                     // print_r($_FILES['gambar']);
 
-                    $nama = addslashes(ucwords($_POST['nama']));
+                    $judul = addslashes(ucwords($_POST['judul']));
                     $ket  = addslashes($_POST['keterangan']);
 
                     $filename = $_FILES['gambar']['name'];
@@ -43,7 +43,7 @@
                     $filesize = $_FILES['gambar']['size'];
 
                     $formatfile = pathinfo($filename, PATHINFO_EXTENSION);
-                    $rename     = 'jurusan'.time().'.'.$formatfile;
+                    $rename     = 'informasi'.time().'.'.$formatfile;
 
                     $allowedtype = array('png', 'jpg', 'jpeg', 'gif');
 
@@ -53,15 +53,16 @@
                         echo '<div class="alert alert-eror">Ukuran file tidak boleh lebih dari 3 MB</div>';
                     }else{
 
-                        move_uploaded_file($tmpname, "../uploads/jurusan/".$rename);
+                        move_uploaded_file($tmpname, "../uploads/informasi/".$rename);
 
-                        $simpan = mysqli_query($conn, "INSERT INTO jurusan VALUES (
+                        $simpan = mysqli_query($conn, "INSERT INTO informasi VALUES (
                             null,
-                            '".$nama."',
+                            '".$judul."',
                             '".$ket."',
                             '".$rename."',
                             null,
-                            null
+                            null,
+                            '".$_SESSION['uid']."'
                         )");
     
                         if($simpan){
